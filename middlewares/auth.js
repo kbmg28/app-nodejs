@@ -6,6 +6,7 @@ const auth = (req, res, next) => {
 
     jwt.verify(token_header, 'kbmg28', (err, decoded) => {
         if (err)    return res.send( { error: 'Token inválido'});
+        res.locals.auth_data = decoded;
         return next();
     })
 }
