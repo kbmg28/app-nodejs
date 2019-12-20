@@ -2,12 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require ('mongoose');
 const bodyParser = require('body-parser')
-
-const url =  'mongodb+srv://usuario_admin:12262628@clusterapi-gfmyz.mongodb.net/test?retryWrites=true&w=majority';
+const config = require('./config/config')
 
 var options = {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true};
 
-mongoose.connect(url,options);
+mongoose.connect(config.bd_string,options);
 mongoose.set('useCreateIndex', true);
 
 mongoose.connection.on('error', (err) =>{
